@@ -16,15 +16,17 @@ public:
 	LatticeBoltzmannExample(const int argc,  char **argv);
 	~LatticeBoltzmannExample();
 
-	void simulate();
+	void setupCuda();
+	
 
 private:
 
 	//=====CUDA members and variables ====
 
-	void cudaLBInit();
+	void cudaLBInit(const dim3& blockSize, const dim3& gridSize);
 	void cudaRun();
 	bool isCudaCompatible();
+	void simulate(const dim3& blockSize, const dim3& gridSize);
 	void waitForDevice();
 
 	//std::unique_ptr<ThrustVector<real>> thrustVectors;
@@ -39,8 +41,6 @@ private:
 	//std::unique_ptr<SimulationParameters<real>> simulationParameters; 
 
 	SimulationParameters<real> *simulationParameters;
-
-
 
 	static const int EXPECTED_NUM_ARGS;
 

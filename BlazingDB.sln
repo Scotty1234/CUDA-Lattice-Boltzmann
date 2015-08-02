@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlazingDB", "BlazingDB\BlazingDB.vcxproj", "{287FC8BE-0483-4056-8338-FD0680F7ABCA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "particles", "particles\particles.vcxproj", "{9006CB53-34DE-49C0-AEC3-4147CAEE2618}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,14 @@ Global
 		{287FC8BE-0483-4056-8338-FD0680F7ABCA}.Release|Win32.Build.0 = Release|Win32
 		{287FC8BE-0483-4056-8338-FD0680F7ABCA}.Release|x64.ActiveCfg = Release|x64
 		{287FC8BE-0483-4056-8338-FD0680F7ABCA}.Release|x64.Build.0 = Release|x64
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Debug|Win32.Build.0 = Debug|Win32
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Debug|x64.ActiveCfg = Debug|x64
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Debug|x64.Build.0 = Debug|x64
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Release|Win32.ActiveCfg = Release|Win32
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Release|Win32.Build.0 = Release|Win32
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Release|x64.ActiveCfg = Release|x64
+		{9006CB53-34DE-49C0-AEC3-4147CAEE2618}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

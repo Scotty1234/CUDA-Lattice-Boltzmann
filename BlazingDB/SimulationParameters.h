@@ -1,5 +1,6 @@
 //Helps to be tidy
 
+#pragma once
 #include <limits>
 
 template<typename T>
