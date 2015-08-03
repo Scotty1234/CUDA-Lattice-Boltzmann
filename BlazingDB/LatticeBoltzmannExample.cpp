@@ -1,62 +1,37 @@
 #include "LatticeBoltzmannExample.h"
 
+#include <ctime>
 #include <iostream>
 
-#define ARGC_NOT_EQUAL_TO_TWO 1
-#define RELAXATION_LESS_THAN_MIN_RELAXATION 2
-
-
-const int LatticeBoltzmannExample::EXPECTED_NUM_ARGS = 5;
-
-/*LatticeBoltzmannExample::~LatticeBoltzmannExample()
+LatticeBoltzmannExample::~LatticeBoltzmannExample()
 {
 	delete simulationParameters;
 	delete thrustVectors;
 
-	//cudaCleanUp();
-}*/
+	cudaCleanup();
+}
 
 
 LatticeBoltzmannExample::LatticeBoltzmannExample(const int argc, char **argv)
 {
 
 	real testDensity = 1.f; //Just a simple test density, doesn't matter for this example
-	real relaxation = atof(argv[1]);
 
-	if (relaxation < 0.5f)
-		relaxation = 1.0f;
+	int xLength = atoi(argv[1]);
 
-	int xLength = atoi(argv[2]);
-
-	if (xLength == 0)
+	if (xLength  < 10) //minimum domain size
 		xLength = 10;
 
+	int yLength = xLength; // square domain for problem
 
+	int writeEvery = atoi(argv[2]);
 
-	int yLength = atoi(argv[3]);
+	if (writeEvery < 0)
+		writeEvery = 0; // ensure not negative. If so, set it to not write. 
 
-	if (yLength == 0)
-		yLength = 10;
+	real relaxation = 3.f * 0.07f * (real)xLength / 3000.f + 0.5f; // related to viscosity of fluid. Close to 0.5 implies low viscosity
 
-	int writeEvery = atoi(argv[4]);
-
-
-
-	//std::unique_ptr<SimulationParameters<real>> simulationParameters(new SimulationParameters<real>(testDensity, relaxation, xLength, yLength, writeEvery));
-
-	simulationParameters = new SimulationParameters<real>(testDensity, relaxation, xLength, yLength, writeEvery);
-	
-
-	
+	simulationParameters = new SimulationParameters<real>(testDensity, relaxation, xLength, yLength, writeEvery);		
 }
-
-
-LatticeBoltzmannExample::~LatticeBoltzmannExample()
-{
-}
-
-//############################
-
-
 
 

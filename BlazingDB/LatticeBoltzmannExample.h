@@ -1,12 +1,9 @@
 #pragma once
 
 #include "SimulationParameters.h"
-#include "ThrustVector.cuh"
+#include "ThrustVectors.cuh"
 
-#include <memory>
-
-
-
+//choose precision and recompile. Double is slower, more so for home user gpus
 typedef float real;
 //typedef double real;
 
@@ -16,35 +13,33 @@ public:
 	LatticeBoltzmannExample(const int argc,  char **argv);
 	~LatticeBoltzmannExample();
 
-	void setupCuda();
+	void run(); // sets up cuda and runs the simulation
 	
 
 private:
 
 	//=====CUDA members and variables ====
 
+	//set up memory and problem
 	void cudaLBInit(const dim3& blockSize, const dim3& gridSize);
-	void cudaRun();
-	bool isCudaCompatible();
+	void cudaCleanup();
+
+	//simple check to see if device is suitable
+	bool isCudaCompatible(); 
+
+	//starts and calculates the fluid dynamics
 	void simulate(const dim3& blockSize, const dim3& gridSize);
+
+	//synchronises host with device and checks for kernel errors
 	void waitForDevice();
 
-	//std::unique_ptr<ThrustVector<real>> thrustVectors;
-
-	ThrustVector<real> *thrustVectors;
+	//group the thrust vectors together, with some helpful methods and abstract them from the main class
+	ThrustVectors<real> *thrustVectors;
 
 	//=======
 
-	void checkArguments(const int argc,  char *argv[]);
-	void writeToDisk();
-	
-	//std::unique_ptr<SimulationParameters<real>> simulationParameters; 
-
+	//holder for the simulation parameters
 	SimulationParameters<real> *simulationParameters;
-
-	static const int EXPECTED_NUM_ARGS;
-
-
 
 };
 

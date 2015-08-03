@@ -3,8 +3,8 @@
 #pragma once
 #include <limits>
 
-template<typename T>
-class SimulationParameters
+template <class T>
+struct SimulationParameters
 {
 public:
 
@@ -15,9 +15,7 @@ public:
 		yLength(yDim),
 		writeEvery(writeFreq)
 	{
-		//checkDensity();
-		//checkRelaxation();
-		//checkLengths();
+
 
 	}
 
@@ -29,32 +27,5 @@ public:
 
 private:
 
-	static const T MIN_RELAXATION;
-	static const T RELAXATION_LOW_WARNING_VALUE;
-	static const T RELAXATION_HIGH_WARNING_VALUE;
-
-	/*void checkDensity()
-	{
-		if (initialDensity <= std::numeric_limits<T>)
-	}
-
-	void checkRelaxation()
-	{
-
-	}
-	
-	checkLengths()
-	{
-
-	}*/
 
 };
-
-template <typename T>
-const T SimulationParameters<T>::MIN_RELAXATION = 0.5;
-
-template <typename T>
-const T SimulationParameters<T>::RELAXATION_LOW_WARNING_VALUE = 0.6;
-
-template <typename T>
-const T SimulationParameters<T>::RELAXATION_HIGH_WARNING_VALUE = 2.0;
